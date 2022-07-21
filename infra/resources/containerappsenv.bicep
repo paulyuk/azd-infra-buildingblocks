@@ -51,26 +51,14 @@ resource containerAppsEnvironment 'Microsoft.App/managedEnvironments@2022-03-01'
   }
 }
 
-resource containerRegistry 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
+module containerRegistry './containerregistry.bicep' = {
   name: 'contreg${resourceToken}'
-  location: location
-  tags: tags
-  sku: {
-    name: 'Standard'
-  }
-  properties: {
-    adminUserEnabled: true
-    anonymousPullEnabled: false
-    dataEndpointEnabled: false
-    encryption: {
-      status: 'disabled'
-    }
-    networkRuleBypassOptions: 'AzureServices'
-    publicNetworkAccess: 'Enabled'
-    zoneRedundancy: 'Disabled'
+  params:{
+    location: location
+    resourceToken: resourceToken
+    tags: tags
   }
 }
 
-
-output AZURE_CONTAINER_REGISTRY_ENDPOINT string = containerRegistry.properties.loginServer
-output AZURE_CONTAINER_REGISTRY_NAME string = containerRegistry.name
+output CONTAINER_REGISTRY_ENDPOINT string = containerRegistry.outputs.CONTAINER_REGISTRY_ENDPOINT
+output CONTAINER_REGISTRY_NAME string = containerRegistry.outputs.CONTAINER_REGISTRY_NAME

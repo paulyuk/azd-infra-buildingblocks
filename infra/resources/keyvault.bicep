@@ -37,4 +37,4 @@ resource keyVaultAccessPolicies 'Microsoft.KeyVault/vaults/accessPolicies@2021-1
 }
 
 
-output AZURE_KEY_VAULT_ENDPOINT string = keyVault.properties.vaultUri
+output KEY_VAULT_ENDPOINT string = keyVault.properties.vaultUri
