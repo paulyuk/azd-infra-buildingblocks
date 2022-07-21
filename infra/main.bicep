@@ -14,7 +14,7 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: location
 }
 
-module application './building-blocks/paas-application.bicep' = {
+module application 'building-blocks/paas-application.bicep' = {
   name: 'pubsub-dapr-servicebus-aca'
   params: {
     name: name
@@ -44,8 +44,8 @@ module ordersContainerApp 'building-blocks/containerapp-http.bicep' = {
   scope: resourceGroup
 }
 
-module servicebus './building-blocks/pubsub-servicebus.bicep' = {
-  name: 'sb-orders'
+module pubsub 'building-blocks/dapr-pubsub-servicebus.bicep' = {
+  name: 'pubsub-sb-orders'
   params: {
     name: name
     location: location
