@@ -38,7 +38,7 @@ module ordersContainerApp 'building-blocks/containerapp-http.bicep' = {
   params:{
     name: name
     location: location
-    containerName: 'checkout'
+    containerName: 'orders'
     ingressPort: 5001
   }
   scope: resourceGroup
