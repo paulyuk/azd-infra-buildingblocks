@@ -20,6 +20,6 @@ module containerAppWorker '../resources/containerapp.bicep' = {
     name: name
     location: location
     containerName: containerName
-    imageName: imageName
+    imageName: imageName  != '' ? imageName : 'nginx:latest'
   }
 }

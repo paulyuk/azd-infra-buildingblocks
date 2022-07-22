@@ -23,7 +23,7 @@ module containerAppHttp '../resources/containerapp-http.bicep' = {
     name: name
     location: location
     containerName: containerName
-    imageName: imageName
+    imageName: imageName != '' ? imageName : 'nginx:latest'
     ingressPort: ingressPort
   }
 }

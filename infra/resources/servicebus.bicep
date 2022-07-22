@@ -1,9 +1,12 @@
-param resourceToken string
+param name string
 param location string
 param skuName string = 'Standard'
-param topicName string = 'orders'
-param tags object
+param topicName string
 
+param resourceToken string = toLower(uniqueString(subscription().id, name, location))
+param tags object = {
+  'azd-env-name': name
+}
 
 resource serviceBusNamespace 'Microsoft.ServiceBus/namespaces@2021-11-01' = {
   name: 'sb-${resourceToken}'
