@@ -23,7 +23,11 @@ resource containerAppsEnvironment 'Microsoft.App/managedEnvironments@2022-03-01'
         sharedKey: logAnalyticsWorkspace.listKeys().primarySharedKey
       }
     }
+
   }
+  dependsOn: [
+    sb
+  ]
 
   resource daprComponent 'daprComponents' = {
     name: 'orderpubsub'
@@ -48,6 +52,9 @@ resource containerAppsEnvironment 'Microsoft.App/managedEnvironments@2022-03-01'
       ]
       scopes: []
     }
+    dependsOn: [
+      sb
+    ]
   }
 }
 

@@ -24,7 +24,6 @@ module containerAppsEnvResources './../resources/containerappsenv.bicep' = {
   }
 
   dependsOn: [
-//    serviceBusResources
     logAnalyticsResources
   ]
 }

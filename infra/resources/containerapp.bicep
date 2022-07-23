@@ -106,4 +106,4 @@ resource keyVaultAccessPolicies 'Microsoft.KeyVault/vaults/accessPolicies@2021-1
   }
 }
 
-output CONTAINERAPP_URI string = 'https://${containerApp.properties.configuration.ingress.fqdn}'
+output CONTAINERAPP_URI string = containerApp.properties.latestRevisionFqdn

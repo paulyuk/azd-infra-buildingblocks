@@ -21,6 +21,9 @@ module application 'building-blocks/paas-application.bicep' = {
     location: location
   }
   scope: resourceGroup
+  dependsOn:[
+    pubsub
+  ]
 }
 
 module checkoutContainerApp 'building-blocks/containerapp-worker.bicep' = {
@@ -31,6 +34,9 @@ module checkoutContainerApp 'building-blocks/containerapp-worker.bicep' = {
     containerName: 'checkout'
   }
   scope: resourceGroup
+  dependsOn:[
+    application
+  ]
 }
 
 module ordersContainerApp 'building-blocks/containerapp-http.bicep' = {
@@ -42,6 +48,9 @@ module ordersContainerApp 'building-blocks/containerapp-http.bicep' = {
     ingressPort: 5001
   }
   scope: resourceGroup
+  dependsOn:[
+    application
+  ]
 }
 
 module pubsub 'building-blocks/dapr-pubsub-servicebus.bicep' = {
