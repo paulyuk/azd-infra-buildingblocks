@@ -15,7 +15,7 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 }
 
 module application 'building-blocks/paas-application.bicep' = {
-  name: 'pubsub-dapr-servicebus-aca'
+  name: 'pubsub-dapr-aca-servicebus'
   params: {
     name: name
     location: location
